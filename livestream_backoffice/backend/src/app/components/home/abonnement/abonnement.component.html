@@ -1,0 +1,107 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Event</h5>
+                </div>
+                <div class="card-body">
+                    <div class="btn-popup pull-right">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-original-title="test"
+                            data-target="#exampleModal" (click)="open(content)">Add Sub</button>
+                        <ng-template #content let-modal>
+                            <div class="modal-header">
+                                <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Sub</h5>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="needs-validation">
+                                    <div class="form">
+                                            <div class="form-group">
+                                                    <label for="validationCustom01" class="mb-1">Sub  Title :</label>
+                                                    <input class="form-control" id="Title"  type="Reference" name="Title" [(ngModel)]="abonnement.title"  type="text">
+                                                </div>
+                                        <div class="form-group">
+                                            <label for="validationCustom01" class="mb-1">Sub  Reference :</label>
+                                            <input class="form-control" id="validationCustom01" placeholder="..." type="Reference" name="Reference" [(ngModel)]="abonnement.reference"  type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="validationCustom01" class="mb-1">Sub Type :</label>
+                                            <textarea class="form-control" id="validationCustom01"  placeholder="..." type="type" name="type" [(ngModel)]="abonnement.type" type="text"> </textarea>
+                                        </div>
+                                     
+                                        <div class="form-group">
+                                            <label for="validationCustom01" class="mb-1">Sub period :</label>
+                                            <textarea class="form-control" id="validationCustom01" placeholder="per days" type="period" name="period" [(ngModel)]="abonnement.periode" type="number"> </textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="validationCustom01" class="mb-1">Sub Price :</label>
+                                            <textarea class="form-control" id="validationCustom01"placeholder="..." type="price" name="price" [(ngModel)]="abonnement.price" type="number"> </textarea>
+                                        </div>
+                                     
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" (click)="save()"(click)="modal.dismiss('Cross click')" class="btn btn-primary">Save</button>
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                                    (click)="modal.dismiss('Cross click')">Close</button>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <div id="batchDelete" class="category-table custom-datatable">
+                        <div  class="table-responsive">
+                            <ng2-smart-table [settings]="settings" [source]="abonnements"       (delete)="onDeleteConfirm($event)"
+                            (edit)="openeditmodal(index,$event)"></ng2-smart-table>
+                        </div>
+                    </div>
+                    <ng-template #index let-modal>
+                        <div class="modal-header">
+                            <h5 class="modal-title f-w-600" id="exampleModalLabel">Update Event</h5>
+                            <button type="button" class="close" aria-label="Close"
+                                (click)="modal.dismiss('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form">
+                                    <div class="form-group">
+                                            <label for="validationCustom01" class="mb-1">Sub  Title :</label>
+                                            <input class="form-control" id="Title"  type="Reference" name="Title" [(ngModel)]="abonnement.title"  type="text">
+                                        </div>
+                                <div class="form-group">
+                                    <label for="validationCustom01" class="mb-1">Sub  Reference :</label>
+                                    <input class="form-control" id="validationCustom01"  type="Reference" name="Reference" [(ngModel)]="abonnement.reference"  type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom01" class="mb-1">Sub Type :</label>
+                                    <textarea class="form-control" id="validationCustom01" type="type" name="type" [(ngModel)]="abonnement.type" type="text"> </textarea>
+                                </div>
+                             
+                                <div class="form-group">
+                                    <label for="validationCustom01" class="mb-1">Sub period :</label>
+                                    <textarea class="form-control" id="validationCustom01" type="period" name="period" [(ngModel)]="abonnement.periode" type="number"> </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom01" class="mb-1">Sub Price :</label>
+                                    <textarea class="form-control" id="validationCustom01" type="price" name="price" [(ngModel)]="abonnement.price" type="number"> </textarea>
+                                </div>
+                             
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" (click)=" update()"(click)="modal.dismiss('Cross click')" class="btn btn-primary">Update</button>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                                (click)="modal.dismiss('Cross click')">Close</button>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->

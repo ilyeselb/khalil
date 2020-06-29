@@ -1,0 +1,63 @@
+<div class="page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 p-0 ">
+                    <div class="card ">
+                        <div class="card-body">
+                            <h1>About us </h1>
+                                <form  class="form-horizontal auth-form" novalidate>
+                                   
+                                    <div class="form-group">
+                                        <textarea required="" name="aboutus"  [(ngModel)]="information.aboutus" type="aboutus" class="form-control"
+                                            placeholder="about us ..">
+                                            </textarea>
+                                    </div>
+                                    <div class="form-group ">
+                                            <label for="validationCustom02" class="mb-1">Event Image :</label>
+                                            <input (change)="handleFileInput($event.target.files)" class="form-control" id="validationCustom02" type="file">
+                                        </div>
+                                 
+                                    <div class="form-button">
+                                        <button class="btn btn-primary text-center" (click)="  onSubmit()" type="submit">ADD</button>
+                                    </div>
+    
+                                </form>
+                                <hr class="style1">
+                                <div>
+                               <p>{{informationdisplay.aboutus}}</p>
+                               <hr>
+                               <img src="{{informationdisplay.image_aboutus}}">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 p-0 ">
+                </div>
+                <div class="col-md-5 p-0 ">
+                        <div class="card ">
+                            <div class="card-body">
+                            <h1>LOGO</h1>
+                                    <form  class="form-horizontal auth-form" novalidate>
+                                    
+                                        <div class="form-group ">
+                                                <label for="validationCustom02" class="mb-1"> Image :</label>
+                                                <input (change)="handleFileInputlogo($event.target.files)" class="form-control" id="validationCustom02" type="file">
+                                            </div>
+                                     
+                                        <div class="form-button">
+                                            <button class="btn btn-primary text-center" (click)=" onSubmitlogo()" type="submit">ADD</button>
+                                        </div>
+        
+                                    </form>
+                                    <hr>
+                               <img src="{{logodisplyy.logo}}">
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <!-- <a [routerLink]="'/dashboard/default'" class="btn btn-primary back-btn">
+                    <app-feather-icons [icon]="'arrow-left'"></app-feather-icons>
+                    back
+                </a> -->
+        </div>
+    </div>

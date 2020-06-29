@@ -1,0 +1,107 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Event</h5>
+                </div>
+                <div class="card-body">
+                    <div class="btn-popup pull-right">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-original-title="test"
+                            data-target="#exampleModal" (click)="open(content)">Add Event</button>
+                        <ng-template #content let-modal>
+                            <div class="modal-header">
+                                <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Event</h5>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="needs-validation">
+                                    <div class="form">
+                                        <div class="form-group">
+                                            <label for="validationCustom01" class="mb-1">Event Title :</label>
+                                            <input class="form-control" id="validationCustom01"  type="Title" name="Title" [(ngModel)]="event.title"  type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="validationCustom01" class="mb-1">Event Description :</label>
+                                            <textarea class="form-control" id="validationCustom01" type="Description" name="Description" [(ngModel)]="event.description" type="text"> </textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label  for="validationCustom01" class="mb-1">
+                                                Event  Date Time:
+                                                <input  [owlDateTimeTrigger]="dt"  type="date" name="date" [(ngModel)]="event.date" [owlDateTime]="dt">
+                                                <owl-date-time    #dt></owl-date-time>
+                                            </label>                                        </div>
+                                            <div class="form-group">
+                                                    <label  for="validationCustom01" class="mb-1"> Send mail as Newslatter  </label>
+                                                <input  class="form-control"name="checkbox" [(ngModel)]="isChecked"   type="checkbox" value="" id="defaultCheck1">
+                                              
+                                              </div>
+                                        <div class="form-group mb-0">
+                                            <label for="validationCustom02" class="mb-1">Event Image :</label>
+                                            <input (change)="handleFileInput($event.target.files)" class="form-control" id="validationCustom02" type="file">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" (click)="save()"(click)="modal.dismiss('Cross click')" class="btn btn-primary">Save</button>
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                                    (click)="modal.dismiss('Cross click')">Close</button>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <div id="batchDelete" class="category-table custom-datatable">
+                        <div  class="table-responsive">
+                            <ng2-smart-table [settings]="settings" [source]="events"       (delete)="onDeleteConfirm($event)"
+                            (edit)="openeditmodal(index,$event)"></ng2-smart-table>
+                        </div>
+                    </div>
+                    <ng-template #index let-modal>
+                        <div class="modal-header">
+                            <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Event</h5>
+                            <button type="button" class="close" aria-label="Close"
+                                (click)="modal.dismiss('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="needs-validation">
+                                <div class="form">
+                                    <div class="form-group">
+                                        <label for="validationCustom01" class="mb-1">Event Title :</label>
+                                        <input class="form-control" id="validationCustom01"  type="Title" name="Title" [(ngModel)]="event.title"  type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="validationCustom01" class="mb-1">Event Description :</label>
+                                        <textarea class="form-control" id="validationCustom01" type="Description" name="Description" [(ngModel)]="event.description" type="text"> </textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label  for="validationCustom01" class="mb-1">
+                                            Event  Date Time:
+                                            <input  [owlDateTimeTrigger]="dt" value="event.date"  type="date" name="date" [(ngModel)]="event.date" [owlDateTime]="dt">
+                                            <owl-date-time    #dt></owl-date-time>
+                                        </label>                                        </div>
+                                      
+                                    <div class="form-group mb-0">
+                                        <label for="validationCustom02" class="mb-1">Event Image :</label>
+                                        <input (change)="handleFileInput($event.target.files)" class="form-control" id="validationCustom02" type="file">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" (click)=" update()"(click)="modal.dismiss('Cross click')" class="btn btn-primary">Update</button>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                                (click)="modal.dismiss('Cross click')">Close</button>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->

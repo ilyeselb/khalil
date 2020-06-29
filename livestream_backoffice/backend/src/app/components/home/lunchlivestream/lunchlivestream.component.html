@@ -1,0 +1,48 @@
+<section class="section-b-space  blog-page">
+   <div class="container">
+      <div class="row">
+         <!--Blog List start-->
+         <div *ngFor="let event of events" class="col-xl-12 col-lg-8 col-md-7 ">
+
+            <div class="row blog-media">
+               <div class="col-xl-6">
+                  <div class="blog-left">
+                     <a><img src="{{event.image}}" class="img-fluid" alt="" /></a>
+                  </div>
+               </div>
+               <div class="col-xl-6">
+                  <div class="blog-right">
+                     <div>
+                        <h6>{{event.date | date:'medium'}}</h6>
+                        <a [routerLink]="'/pages/blog/details'">
+                           <h4>{{event.title}}</h4>
+                        </a>
+                        <ul class="post-social">
+                           <!-- <li>Posted By : Admin Admin </li>
+                                      <li><i class="fa fa-heart"></i>  5 Hits  </li>
+                                      <li><i class="fa fa-comments"></i> 10  Comment</li> -->
+                        </ul>
+                        <p>{{event.description}}</p>
+                        <hr class="style1">
+                        <div *ngIf="!boolean">
+                           
+                           <button (click)="lunchstream(event)" class="btn btn-primary"> create live stream </button>
+
+                        </div>
+                        <div *ngIf="boolean">
+                           <p> Stream ID : <strong>{{event.stream_id}}</strong></p>
+                           <p> Playback ID : <strong>{{event.playback_id}} </strong></p>
+    <hr>
+    <button (click)="finished(event)" class="btn btn-primary"> create live stream </button>
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <hr>
+         </div>
+         <!--Blog List start-->
+      </div>
+   </div>
+</section>
