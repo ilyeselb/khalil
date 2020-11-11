@@ -21,7 +21,7 @@ const routes: Routes = [
     canActivate: [AuthGuard], 
     data: {
       title: "register",
-      roles: ['admin']
+      // roles: ['admin']
     }
     
   }

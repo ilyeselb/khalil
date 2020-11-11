@@ -4,7 +4,7 @@ import { mediaDB } from 'src/app/shared/tables/media';
 import { InformationsService } from 'src/app/shared/service/informations.service';
 import { informations } from 'src/app/shared/data/informations';
 import { logo } from 'src/app/shared/data/logo';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-information',
@@ -17,7 +17,7 @@ export class InformationComponent implements OnInit {
   public fileToUpload: FileList = null;
   public fileToUploadlogo: FileList = null;
   public information
-  public informationdisplay
+  public informationdisplay = new informations()
   public informations = []
   public logos = []
   public logo 
@@ -40,12 +40,16 @@ export class InformationComponent implements OnInit {
     this. getlogo()
   }
   onSubmitlogo() {
-    if(this.logodisplyy.logo)
+    if(this.logodisplyy.logo !== null)
     
   {    
-    
+    try {
+      this.logodisplyy.logo =   this.logodisplyy.logo.split("/", 5)[4]
 
-    this.logodisplyy.logo =   this.logodisplyy.logo.split("/", 5)[4]
+    } catch (error) {
+      
+    }
+
     this.inforservice.deletelogo(this.logodisplyy).subscribe(data => {
     const formdata = new FormData();
     formdata.append("photos", this.fileToUploadlogo[0]);
@@ -63,9 +67,15 @@ export class InformationComponent implements OnInit {
    
   }
   onSubmit() {
-    if(this.informationdisplay)
+    if(this.informationdisplay!== null)
     {
-      this.informationdisplay.image_aboutus =   this.informationdisplay.image_aboutus.split("/", 5)[4]
+      try {
+         
+        // this.informationdisplay.image_aboutus =   this.informationdisplay.image_aboutus.split("/", 5)[4]
+
+      } catch (error) {
+        
+      }
 
       this.inforservice.delete(this.informationdisplay).subscribe(data => {
       const formdata = new FormData();
@@ -93,8 +103,6 @@ export class InformationComponent implements OnInit {
   }
   get() {
     this.inforservice.get().subscribe(data => {
-      console.log(data);
-
       data.forEach(element => {
         element.image_aboutus = environment.pathhome + element.image_aboutus
         this.informationdisplay = element

@@ -24,16 +24,19 @@
                         </ul>
                         <p>{{event.description}}</p>
                         <hr class="style1">
-                        <div *ngIf="!boolean">
-                           
+                        <div *ngIf="event.playback_id === ''">
+
                            <button (click)="lunchstream(event)" class="btn btn-primary"> create live stream </button>
 
                         </div>
-                        <div *ngIf="boolean">
+                        <div *ngIf="event.playback_id !== ''">
                            <p> Stream ID : <strong>{{event.stream_id}}</strong></p>
                            <p> Playback ID : <strong>{{event.playback_id}} </strong></p>
-    <hr>
-    <button (click)="finished(event)" class="btn btn-primary"> create live stream </button>
+                           <hr>
+                           <div *ngIf="event.stat !== 'finished'">
+                              <button (click)="finished(event)" class="btn btn-primary"> Close live stream </button>
+
+                           </div>
 
                         </div>
                      </div>

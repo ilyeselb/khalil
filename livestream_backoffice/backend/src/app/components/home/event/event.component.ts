@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { event } from 'src/app/shared/data/event';
 import { EventService } from 'src/app/shared/service/event.service';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { DatePipe } from '@angular/common';
 import { user } from 'src/app/shared/data/user';
 import { UserService } from 'src/app/shared/service/user.service';
@@ -110,6 +110,7 @@ export class EventComponent implements OnInit {
       this.event.stat = 'En attente'
       this.event.stream_id=''
       this.event.playback_id=''
+      this.event.assests_id = ''
       this.eventservice.add(this.event).subscribe(data => {   
         let body = {
           users:  this.Users ,

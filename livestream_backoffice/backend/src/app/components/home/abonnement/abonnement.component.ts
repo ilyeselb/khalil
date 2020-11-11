@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { event } from 'src/app/shared/data/event';
 import { abonnement } from 'src/app/shared/data/abonnement ';
 import { AbonnementService } from 'src/app/shared/service/abonnement.service';
